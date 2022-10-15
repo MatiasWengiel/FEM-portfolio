@@ -12,7 +12,6 @@ function App() {
         light: "#5FB4A2",
         main: '#203A4C',
         dark: '#33323D'
-        // contrastText: will be calculated to contrast with palette.primary.main
       },
       secondary: {
         light: '#FAFAFA',
