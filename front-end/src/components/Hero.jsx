@@ -32,6 +32,7 @@ export default function Hero(props) {
             fontWeight: "bold",
             textAlign: "left",
             marginBottom: { sm: "30px", xs: "20px" },
+            textAlign: "center",
           }}
         >
           Hey, I am Matias Wengiel and I am passionate about building great
