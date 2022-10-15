@@ -30,7 +30,6 @@ export default function Hero(props) {
           sx={{
             fontSize: { lg: "2.5em", md: "1.75em", sm: "1.2em", xs: "1.5em" },
             fontWeight: "bold",
-            textAlign: "left",
             marginBottom: { sm: "30px", xs: "20px" },
             textAlign: "center",
           }}
