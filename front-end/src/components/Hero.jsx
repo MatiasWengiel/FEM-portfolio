@@ -4,17 +4,31 @@ import heroBackground from "../images/image-homepage-hero.jpg";
 
 export default function Hero(props) {
   return (
-    <Container sx={{ mt: 15 }}>
+    <Container
+      sx={{
+        mt: 15,
+        position: "relative",
+      }}
+    >
       <Image src={heroBackground} />
       <Paper
         sx={{
-          position: "relative",
-          width: 1 / 2,
-          height: "375px",
-          marginTop: "-375px",
+          borderRadius: 0,
+          paddingTop: "50px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "start",
+          position: "absolute",
+          bottom: 0,
         }}
       >
-        <Typography variant="h4">
+        <Typography
+          variant="h4"
+          sx={{
+            textAlign: "left",
+            marginBottom: "50px",
+          }}
+        >
           Hey, I am Matias Wengiel and I love building beautiful websites.
         </Typography>
         <Button>
