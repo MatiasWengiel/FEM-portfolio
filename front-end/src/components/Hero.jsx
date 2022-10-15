@@ -14,24 +14,37 @@ export default function Hero(props) {
       <Paper
         sx={{
           borderRadius: 0,
-          paddingTop: "50px",
+          boxShadow: "none",
+          paddingTop: { sm: "30px", xs: "20px" },
+          paddingRight: { sm: "30px", xs: "20px" },
           display: "flex",
           flexDirection: "column",
           alignItems: "start",
-          position: "absolute",
-          bottom: 0,
+          position: { sm: "absolute" },
+          bottom: { sm: 0 },
+          maxWidth: { sm: "40%" },
+          maxHeight: { sm: "50%" },
         }}
       >
         <Typography
-          variant="h4"
           sx={{
+            fontSize: { lg: "2.5em", md: "1.75em", sm: "1.2em", xs: "1.5em" },
+            fontWeight: "bold",
             textAlign: "left",
-            marginBottom: "50px",
+            marginBottom: { sm: "30px", xs: "20px" },
           }}
         >
-          Hey, I am Matias Wengiel and I love building beautiful websites.
+          Hey, I am Matias Wengiel and I am passionate about building great
+          code.
         </Typography>
-        <Button>
+        <Button
+          sx={{
+            width: "200px",
+            display: "flex",
+            flexFlow: "row",
+            justifyContent: "space-around",
+          }}
+        >
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14">
             <g fill="none" fill-rule="evenodd" stroke="#5FB4A2">
               <path d="M0 9l8 4 8-4" />
