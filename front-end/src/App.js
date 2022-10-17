@@ -1,7 +1,7 @@
 import './App.css';
 import NavBar from './components/NavBar';
 import Hero from './components/Hero'
-import { ThemeProvider } from '@emotion/react';
+import { ThemeProvider } from '@mui/material/styles';
 import { createTheme } from '@mui/material/styles';
 
 function App() {
@@ -22,6 +22,8 @@ function App() {
       }
     }
   });
+
+
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
