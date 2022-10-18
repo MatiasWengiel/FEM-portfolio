@@ -1,6 +1,6 @@
 import Image from "mui-image";
 import { Container, Typography } from "@mui/material";
-import testPicture from "../images/TestPicture.jpg";
+import myPicture from "../images/TestPicture.jpg";
 
 export default function AboutMe(props) {
   return (
@@ -23,7 +23,7 @@ export default function AboutMe(props) {
           }}
         >
           <Image
-            src={testPicture}
+            src={myPicture}
             sx={{
               objectPosition: {
                 xs: "top -65px right 0",
