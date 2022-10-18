@@ -1,6 +1,7 @@
 import './App.css';
 import NavBar from './components/NavBar';
 import Hero from './components/Hero'
+import AboutMe from './components/AboutMe'
 import { ThemeProvider } from '@mui/material/styles';
 import { createTheme } from '@mui/material/styles';
 
@@ -29,6 +30,7 @@ function App() {
       <div className="App">
         <NavBar />
         <Hero />
+        <AboutMe />
       </div>
     </ThemeProvider>
   );

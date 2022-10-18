@@ -41,6 +41,7 @@ export default function Hero(props) {
           code.
         </Typography>
         <Button
+          href="#AboutMe"
           sx={{
             width: "200px",
             display: "flex",
