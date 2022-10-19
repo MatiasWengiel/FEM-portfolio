@@ -1,9 +1,9 @@
 import { Container, Typography, Button } from "@mui/material";
 import Image from "mui-image";
-import { useState } from "react";
-
+import { useTheme } from "@mui/material/styles";
 export default function Project(props) {
-  const { id, title, pictureURL, descriptionText, taglineText } = {
+  const theme = useTheme();
+  const { id, title, pictureURL, descriptionText, taglineText, githubLink } = {
     ...props,
   };
   //Causes the orientation of the picture and text components to reverse in alternating fashion depending on the id prop
@@ -46,10 +46,16 @@ export default function Project(props) {
           <Typography variant="body1">{descriptionText}</Typography>
         </Container>
         <Button
-          href="#"
-          sx={{ border: "1px solid black", px: 3, py: 1, width: 200 }}
+          href={githubLink}
+          target="_blank"
+          sx={{
+            border: `1px solid ${theme.palette.secondary.main}`,
+            px: 3,
+            py: 1,
+            width: 250,
+          }}
         >
-          View Project
+          View Project Code
         </Button>
       </Container>
     </Container>
