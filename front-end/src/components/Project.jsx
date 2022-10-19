@@ -29,7 +29,7 @@ export default function Project(props) {
           backgroundColor: `${theme.palette.secondary.light}`,
         }}
       >
-        <Image src={pictureURL} sx={{ objectFit: "contain" }} />
+        <Image src={pictureURL} fit="contain" />
       </Container>
       <Container
         disableGutters
