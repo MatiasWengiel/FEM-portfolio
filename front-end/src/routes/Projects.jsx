@@ -15,6 +15,15 @@ export default function Projects(props) {
       <Project
         key={2}
         id={2}
+        title="Portfolio"
+        pictureURL=""
+        taglineText="You are here! And now you can see how I built this"
+        descriptionText="Created using React and MUI. General design and colors from frontendmentor.io's figma designs."
+        githubLink="https://github.com/MatiasWengiel/FEM-portfolio"
+      />
+      <Project
+        key={3}
+        id={3}
         title="PasswordKeepR"
         pictureURL="https://github.com/MatiasWengiel/MidtermProject-PasswordKeepR-Matias-Brian-Moe/blob/master/project_organization/PWKeepR-main-page.png?raw=true"
         taglineText="PasswordKeepR allows for the easy and secure sharing of passwords across an organization."
