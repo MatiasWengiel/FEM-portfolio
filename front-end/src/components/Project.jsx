@@ -1,9 +1,14 @@
 import { Container, Typography, Button } from "@mui/material";
 import Image from "mui-image";
-import myPicture from "../images/TestPicture.jpg";
+import { useState } from "react";
 
 export default function Project(props) {
-  const orientation = "row";
+  const { id, title, pictureURL, descriptionText, taglineText } = {
+    ...props,
+  };
+  //Causes the orientation of the picture and text components to reverse in alternating fashion depending on the id prop
+  const orientation = (id) => (id % 2 === 0 ? "row-reverse" : "row");
+
   return (
     <Container
       sx={{
@@ -11,14 +16,14 @@ export default function Project(props) {
         height: 350,
         position: "relative",
         display: "flex",
-        flexFlow: { orientation },
+        flexFlow: orientation(id),
       }}
     >
       <Container
         disableGutters
-        sx={{ width: 1 / 2, p: 3, background: "lightgrey" }}
+        sx={{ width: 1 / 2, p: 3, background: "lightblue" }}
       >
-        <Image src={myPicture} />
+        <Image src={pictureURL} />
       </Container>
       <Container
         disableGutters
@@ -33,12 +38,12 @@ export default function Project(props) {
       >
         <Container disableGutters>
           <Typography variant="h3" sx={{ textAlign: "center", mb: 2 }}>
-            Title
+            {title}
           </Typography>
-          <Typography variant="body1">
-            This is the description of the Project. It will have a list of stack
-            like React, Node, Express and Such
+          <Typography variant="h6" mb={1}>
+            {taglineText}
           </Typography>
+          <Typography variant="body1">{descriptionText}</Typography>
         </Container>
         <Button
           href="#"
