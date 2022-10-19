@@ -8,11 +8,13 @@ export default function Project(props) {
   };
   //Causes the orientation of the picture and text components to reverse in alternating fashion depending on the id prop
   const orientation = (id) => (id % 2 === 0 ? "row-reverse" : "row");
+  //Add extra margin at the top for the first rendered to account for the NavBar
+  const marginTop = (id) => (id === 1 ? 15 : 5);
 
   return (
     <Container
       sx={{
-        mt: 15,
+        mt: marginTop(id),
         height: 350,
         position: "relative",
         display: "flex",
@@ -21,7 +23,11 @@ export default function Project(props) {
     >
       <Container
         disableGutters
-        sx={{ width: 1 / 2, p: 3, background: "lightblue" }}
+        sx={{
+          width: 1 / 2,
+          p: 3,
+          backgroundColor: `${theme.palette.secondary.light}`,
+        }}
       >
         <Image src={pictureURL} sx={{ objectFit: "contain" }} />
       </Container>
