@@ -22,7 +22,9 @@ export default function NavBar(props) {
       </div>
       <div>
         <Button href="/">Home</Button>
-        <Button href="https://github.com/MatiasWengiel">Github</Button>
+        <Button href="https://github.com/MatiasWengiel" target="_blank">
+          Github
+        </Button>
         <Button href="/projects">Projects</Button>
         <Button>Contact Me</Button>
       </div>
