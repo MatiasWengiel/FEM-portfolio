@@ -42,6 +42,17 @@ const theme = createTheme({
     error: {
       main: '#F43030'
     }
+  },
+  typography: {
+    h1: {
+      color: '#203A4C'
+    },
+    h2: {
+      color: '#203A4C'
+    },
+    h3: {
+      color: '#203A4C'
+    },
   }
 });
 
