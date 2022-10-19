@@ -45,12 +45,18 @@ export default function Project(props) {
           px: 6,
           display: "flex",
           flexFlow: "column",
-          // justifyContent: "space-around",
           alignItems: "center",
         }}
       >
         <Container disableGutters>
-          <Typography variant="h3" sx={{ textAlign: "center", mb: 2 }}>
+          <Typography
+            variant="h3"
+            sx={{
+              textAlign: "center",
+              mb: 2,
+              fontSize: { xs: "2rem", sm: "3rem" },
+            }}
+          >
             {title}
           </Typography>
           <Typography variant="h6" mb={1} sx={{ fontSize: textResponsiveFont }}>
