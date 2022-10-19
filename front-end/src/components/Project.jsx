@@ -23,7 +23,7 @@ export default function Project(props) {
         disableGutters
         sx={{ width: 1 / 2, p: 3, background: "lightblue" }}
       >
-        <Image src={pictureURL} />
+        <Image src={pictureURL} sx={{ objectFit: "contain" }} />
       </Container>
       <Container
         disableGutters
