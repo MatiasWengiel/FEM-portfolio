@@ -1,7 +1,7 @@
 import { AppBar, Button } from "@mui/material";
 
 export default function NavBar(props) {
-  const appBarStyleOverrides = {
+  const appBarStyles = {
     height: 80,
     p: 5,
     display: "flex",
@@ -11,7 +11,7 @@ export default function NavBar(props) {
     background: "white",
   };
   return (
-    <AppBar sx={appBarStyleOverrides}>
+    <AppBar sx={appBarStyles}>
       <div>
         <svg xmlns="http://www.w3.org/2000/svg" width="10" height="16">
           <path fill="none" stroke="#33323D" d="M9 0L1 8l8 8" />
