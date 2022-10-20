@@ -1,8 +1,9 @@
 import Image from "mui-image";
-import { Container, Typography } from "@mui/material";
+import { Container, Typography, useTheme } from "@mui/material";
 import myPicture from "../images/TestPicture.jpg";
 
 export default function AboutMe(props) {
+  const theme = useTheme();
   const mainContainerStyles = {
     display: "flex",
     flexFlow: "row wrap",
@@ -45,6 +46,7 @@ export default function AboutMe(props) {
             variant="body1"
             sx={{
               fontSize: textResponsiveFont,
+              color: `${theme.palette.primary.dark}`,
             }}
           >
             Enthusiastic Full-Stack Web Developer, passionate about writing code
