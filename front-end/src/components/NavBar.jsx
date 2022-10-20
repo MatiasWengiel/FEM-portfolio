@@ -36,12 +36,13 @@ export default function NavBar(props) {
 
   return (
     <AppBar sx={appBarStyles}>
-      <Box>
-        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="16">
-          <path fill="none" stroke="#33323D" d="M9 0L1 8l8 8" />
-        </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="16">
-          <path fill="none" stroke="#33323D" d="M1 0l8 8-8 8" />
+      <Box sx={{ display: "flex", alignItems: "center" }}>
+        <svg xmlns="http://www.w3.org/2000/svg" width="61" height="32">
+          <path
+            fill="#33323D"
+            fill-rule="evenodd"
+            d="M60.082 5.878L44.408 32 28.735 5.878h31.347zM15.673 0l15.674 26.122H0L15.673 0z"
+          />
         </svg>
         <Typography
           variant="body"
