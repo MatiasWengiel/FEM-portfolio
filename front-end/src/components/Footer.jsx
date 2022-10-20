@@ -1,6 +1,5 @@
 import { Button, Typography, Box, Container, useTheme } from "@mui/material";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import GitHubIcon from "@mui/icons-material/GitHub";
+import ContactButtons from "./ContactButtons";
 
 export default function Footer(props) {
   const theme = useTheme();
@@ -72,20 +71,7 @@ export default function Footer(props) {
           </Typography>
         </Container>
         <Container sx={{ display: "flex", justifyContent: "end" }}>
-          <Button
-            href="https://www.linkedin.com/in/matias-wengiel/"
-            target="__blank"
-            sx={{ color: `inherit` }}
-          >
-            <LinkedInIcon />
-          </Button>
-          <Button
-            href="https://github.com/MatiasWengiel"
-            target="__blank"
-            sx={{ color: `inherit` }}
-          >
-            <GitHubIcon />
-          </Button>
+          <ContactButtons />
         </Container>
       </Box>
     </Box>
