@@ -1,7 +1,15 @@
 import { Button, Typography, Box, Container, useTheme } from "@mui/material";
+import { useLocation } from "react-router-dom";
 import ContactButtons from "./ContactButtons";
 
 export default function Footer(props) {
+  const routesWithCallToAction = ["/", "/projects"];
+  const useDisplayCallToAction = () => {
+    const currentLocation = useLocation();
+    if (!routesWithCallToAction.includes(currentLocation.pathname))
+      return "none";
+    return "flex";
+  };
   const theme = useTheme();
   const buttonStyles = {
     width: "200px",
@@ -28,7 +36,7 @@ export default function Footer(props) {
     >
       <Container
         sx={{
-          display: "flex",
+          display: useDisplayCallToAction,
           flexFlow: { xs: "column", sm: "row" },
           justifyContent: "space-between",
           alignItems: "center",
