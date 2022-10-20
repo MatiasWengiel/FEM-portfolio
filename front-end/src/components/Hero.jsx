@@ -24,7 +24,7 @@ export default function Hero(props) {
     fontSize: { lg: "2.5em", md: "1.75em", sm: "1.2em", xs: "1.5em" },
     fontWeight: "bold",
     marginBottom: { sm: "30px", xs: "20px" },
-    color: `${theme.palette.primary.dark}`,
+    color: `${theme.palette.primary.main}`,
   };
 
   const buttonStyles = {
