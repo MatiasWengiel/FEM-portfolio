@@ -43,7 +43,9 @@ export default function Footer(props) {
         >
           Interested in doing a project together?
         </Typography>
-        <Button sx={buttonStyles}>Contact Me</Button>
+        <Button sx={buttonStyles} href="/contact">
+          Contact Me
+        </Button>
       </Container>
       <Box
         sx={{
@@ -59,7 +61,7 @@ export default function Footer(props) {
           <svg xmlns="http://www.w3.org/2000/svg" width="61" height="32">
             <path
               fill={`${theme.palette.secondary.main}`}
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M60.082 5.878L44.408 32 28.735 5.878h31.347zM15.673 0l15.674 26.122H0L15.673 0z"
             />
           </svg>
