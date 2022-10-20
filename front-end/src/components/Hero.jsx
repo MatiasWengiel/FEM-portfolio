@@ -2,6 +2,7 @@ import { Button, Container, Paper, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { Image } from "mui-image";
 import heroBackground from "../images/image-homepage-hero.jpg";
+import KeyboardDoubleArrowDownIcon from "@mui/icons-material/KeyboardDoubleArrowDown";
 
 export default function Hero(props) {
   const theme = useTheme();
@@ -33,6 +34,10 @@ export default function Hero(props) {
     justifyContent: "space-around",
     backgroundColor: `${theme.palette.primary.main}`,
     color: `${theme.palette.secondary.main}`,
+    "&:hover": {
+      color: `${theme.palette.primary.main}`,
+      backgroundColor: `${theme.palette.secondary.main}`,
+    },
   };
 
   return (
@@ -49,13 +54,7 @@ export default function Hero(props) {
           code.
         </Typography>
         <Button href="#AboutMe" sx={buttonStyles}>
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14">
-            <g fill="none" fillRule="evenodd" stroke="#5FB4A2">
-              <path d="M0 9l8 4 8-4" />
-              <path opacity=".5" d="M0 5l8 4 8-4" />
-              <path opacity=".25" d="M0 1l8 4 8-4" />
-            </g>
-          </svg>
+          <KeyboardDoubleArrowDownIcon />
           About Me
         </Button>
       </Paper>
