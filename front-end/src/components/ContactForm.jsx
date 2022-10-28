@@ -64,9 +64,8 @@ export default function ContactForm() {
             sx={{ width: { xs: 250, sm: 500 } }}
             name="name"
             label="What's your name?"
-          >
-            {formData.name}
-          </TextField>
+            value={formData.name}
+          ></TextField>
         </Box>
         <Box mt={1}>
           <Typography variant="body1">Email:</Typography>
@@ -75,9 +74,8 @@ export default function ContactForm() {
             sx={{ width: { xs: 250, sm: 500 } }}
             name="email"
             label="Please enter your e-mail"
-          >
-            {formData.email}
-          </TextField>
+            value={formData.email}
+          ></TextField>
         </Box>
         <Box mt={1}>
           <Typography variant="body1">Message</Typography>
@@ -88,9 +86,8 @@ export default function ContactForm() {
             label="I'll be happy to hear from you!"
             multiline
             rows={4}
-          >
-            {formData.message}
-          </TextField>
+            value={formData.message}
+          ></TextField>
         </Box>
         <Button sx={buttonStyles} onClick={handleSubmit}>
           Submit
