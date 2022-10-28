@@ -7,8 +7,8 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import { useState } from "react";
 import axios from "axios";
+import useContactForm from "./hooks/useContactForm";
 
 export default function ContactForm() {
   const theme = useTheme();
@@ -27,49 +27,16 @@ export default function ContactForm() {
     },
   };
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  const [sending, setSending] = useState(false);
-  const [sendingFailed, setSendingFailed] = useState(false);
-  const [failedValidation, setFailedValidation] = useState({
-    email: false,
-    message: false,
-  });
-  const [validationErrorMessage, setValidationErrorMessage] = useState({
-    email: "",
-    message: "",
-  });
-
-  const handleChange = (event) => {
-    event.preventDefault();
-    setFormData({ ...formData, [event.target.name]: event.target.value });
-  };
-  const validate = () => {
-    let allowSubmit = true;
-    if (formData.email === "") {
-      setFailedValidation({ ...failedValidation, email: true });
-      setValidationErrorMessage({
-        ...validationErrorMessage,
-        email: "I'll need your email to contact you back",
-      });
-      allowSubmit = false;
-      console.log("in the email part");
-    }
-
-    if (formData.message === "") {
-      setFailedValidation({ ...failedValidation, message: true });
-      setValidationErrorMessage({
-        ...validationErrorMessage,
-        message: "Please tell me the reason for your contact request",
-      });
-      allowSubmit = false;
-    }
-    return allowSubmit;
-  };
+  const {
+    setFormData,
+    setSending,
+    setSendingFailed,
+    setFailedValidation,
+    setValidationErrorMessage,
+    handleChange,
+    validate,
+    state,
+  } = useContactForm();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -80,7 +47,7 @@ export default function ContactForm() {
     setSending(true);
     setSendingFailed(false);
     axios
-      .post("https://formbold.com/s/oaBd6BREAKER", { data: formData })
+      .post("https://formbold.com/s/oaBd6BREAKER", { data: state.formData })
       .then((r) => {
         if (r.status === 201) {
           setFormData({ name: "", email: "", message: "" });
@@ -95,7 +62,7 @@ export default function ContactForm() {
   };
   return (
     <>
-      {sendingFailed && (
+      {state.sendingFailed && (
         <Alert
           severity="error"
           sx={{ position: "absolute", mt: "80px", width: "100vw" }}
@@ -126,8 +93,8 @@ export default function ContactForm() {
               sx={{ width: { xs: 250, sm: 500 } }}
               name="name"
               label="What's your name?"
-              value={formData.name}
-              disabled={sending}
+              value={state.formData.name}
+              disabled={state.sending}
             ></TextField>
           </Box>
           <Box mt={1}>
@@ -137,10 +104,10 @@ export default function ContactForm() {
               sx={{ width: { xs: 250, sm: 500 } }}
               name="email"
               label="Please enter your e-mail"
-              value={formData.email}
-              error={failedValidation.email}
-              helperText={validationErrorMessage.email}
-              disabled={sending}
+              value={state.formData.email}
+              error={state.failedValidation.email}
+              helperText={state.validationErrorMessage.email}
+              disabled={state.sending}
             ></TextField>
           </Box>
           <Box mt={1}>
@@ -151,19 +118,19 @@ export default function ContactForm() {
               name="message"
               multiline
               rows={4}
-              value={formData.message}
-              error={failedValidation.message}
-              helperText={validationErrorMessage.message}
-              disabled={sending}
+              value={state.formData.message}
+              error={state.failedValidation.message}
+              helperText={state.validationErrorMessage.message}
+              disabled={state.sending}
             ></TextField>
           </Box>
           <Box>
-            {!sending && (
+            {!state.sending && (
               <Button sx={buttonStyles} onClick={handleSubmit}>
                 Submit
               </Button>
             )}
-            {sending && (
+            {state.sending && (
               <CircularProgress
                 sx={{ width: "200px", height: "36.5px", mt: "30px" }}
               />
