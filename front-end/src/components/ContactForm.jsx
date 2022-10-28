@@ -35,18 +35,52 @@ export default function ContactForm() {
 
   const [sending, setSending] = useState(false);
   const [sendingFailed, setSendingFailed] = useState(false);
+  const [failedValidation, setFailedValidation] = useState({
+    email: false,
+    message: false,
+  });
+  const [validationErrorMessage, setValidationErrorMessage] = useState({
+    email: "",
+    message: "",
+  });
 
   const handleChange = (event) => {
     event.preventDefault();
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
+  const validate = () => {
+    let allowSubmit = true;
+    if (formData.email === "") {
+      setFailedValidation({ ...failedValidation, email: true });
+      setValidationErrorMessage({
+        ...validationErrorMessage,
+        email: "I'll need your email to contact you back",
+      });
+      allowSubmit = false;
+      console.log("in the email part");
+    }
+
+    if (formData.message === "") {
+      setFailedValidation({ ...failedValidation, message: true });
+      setValidationErrorMessage({
+        ...validationErrorMessage,
+        message: "Please tell me the reason for your contact request",
+      });
+      allowSubmit = false;
+    }
+    return allowSubmit;
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setFailedValidation({ email: false, message: false });
+    setValidationErrorMessage({ email: "", message: "" });
+    if (!validate()) return;
+
     setSending(true);
     setSendingFailed(false);
     axios
-      .post("https://formbold.com/s/oaBd6", { data: formData })
+      .post("https://formbold.com/s/oaBd6BREAKER", { data: formData })
       .then((r) => {
         if (r.status === 201) {
           setFormData({ name: "", email: "", message: "" });
@@ -104,7 +138,8 @@ export default function ContactForm() {
               name="email"
               label="Please enter your e-mail"
               value={formData.email}
-              required
+              error={failedValidation.email}
+              helperText={validationErrorMessage.email}
               disabled={sending}
             ></TextField>
           </Box>
@@ -114,11 +149,11 @@ export default function ContactForm() {
               onChange={handleChange}
               sx={{ width: { xs: 250, sm: 500 } }}
               name="message"
-              label="I'll be happy to hear from you!"
               multiline
               rows={4}
               value={formData.message}
-              required
+              error={failedValidation.message}
+              helperText={validationErrorMessage.message}
               disabled={sending}
             ></TextField>
           </Box>
