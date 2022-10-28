@@ -1,4 +1,11 @@
-import { Box, Button, TextField, Typography, useTheme } from "@mui/material";
+import {
+  Box,
+  Button,
+  CircularProgress,
+  TextField,
+  Typography,
+  useTheme,
+} from "@mui/material";
 import { useState } from "react";
 import axios from "axios";
 
@@ -25,6 +32,8 @@ export default function ContactForm() {
     message: "",
   });
 
+  const [sending, setSending] = useState(false);
+
   const handleChange = (event) => {
     event.preventDefault();
     setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -32,11 +41,13 @@ export default function ContactForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setSending(true);
     axios
       .post("https://formbold.com/s/oaBd6", { data: formData })
       .then((r) => {
         if (r.status === 201) {
           setFormData({ name: "", email: "", message: "" });
+          setSending(false);
         }
       })
       .catch((err) => console.log(err));
@@ -65,6 +76,7 @@ export default function ContactForm() {
             name="name"
             label="What's your name?"
             value={formData.name}
+            disabled={sending}
           ></TextField>
         </Box>
         <Box mt={1}>
@@ -75,6 +87,8 @@ export default function ContactForm() {
             name="email"
             label="Please enter your e-mail"
             value={formData.email}
+            required
+            disabled={sending}
           ></TextField>
         </Box>
         <Box mt={1}>
@@ -87,11 +101,22 @@ export default function ContactForm() {
             multiline
             rows={4}
             value={formData.message}
+            required
+            disabled={sending}
           ></TextField>
         </Box>
-        <Button sx={buttonStyles} onClick={handleSubmit}>
-          Submit
-        </Button>
+        <Box>
+          {!sending && (
+            <Button sx={buttonStyles} onClick={handleSubmit}>
+              Submit
+            </Button>
+          )}
+          {sending && (
+            <CircularProgress
+              sx={{ width: "200px", height: "36.5px", mt: "30px" }}
+            />
+          )}
+        </Box>
       </Box>
     </Box>
   );
