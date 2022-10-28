@@ -1,5 +1,6 @@
 import { Box, Button, TextField, Typography, useTheme } from "@mui/material";
 import { useState } from "react";
+import axios from "axios";
 
 export default function ContactForm() {
   const theme = useTheme();
@@ -18,7 +19,11 @@ export default function ContactForm() {
     },
   };
 
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
   const handleChange = (event) => {
     event.preventDefault();
@@ -27,6 +32,14 @@ export default function ContactForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    axios
+      .post("https://formbold.com/s/oaBd6", { data: formData })
+      .then((r) => {
+        if (r.status === 201) {
+          setFormData({ name: "", email: "", message: "" });
+        }
+      })
+      .catch((err) => console.log(err));
   };
   return (
     <Box
@@ -49,28 +62,39 @@ export default function ContactForm() {
           <TextField
             onChange={handleChange}
             sx={{ width: { xs: 250, sm: 500 } }}
+            name="name"
             label="What's your name?"
-          />
+          >
+            {formData.name}
+          </TextField>
         </Box>
         <Box mt={1}>
           <Typography variant="body1">Email:</Typography>
           <TextField
             onChange={handleChange}
             sx={{ width: { xs: 250, sm: 500 } }}
+            name="email"
             label="Please enter your e-mail"
-          />
+          >
+            {formData.email}
+          </TextField>
         </Box>
         <Box mt={1}>
           <Typography variant="body1">Message</Typography>
           <TextField
             onChange={handleChange}
             sx={{ width: { xs: 250, sm: 500 } }}
+            name="message"
             label="I'll be happy to hear from you!"
             multiline
             rows={4}
-          />
+          >
+            {formData.message}
+          </TextField>
         </Box>
-        <Button sx={buttonStyles}>Submit</Button>
+        <Button sx={buttonStyles} onClick={handleSubmit}>
+          Submit
+        </Button>
       </Box>
     </Box>
   );
