@@ -1,4 +1,4 @@
-import { Container, Typography, Button } from "@mui/material";
+import { Container, Typography, Button, Box } from "@mui/material";
 import Image from "mui-image";
 import { useTheme } from "@mui/material/styles";
 export default function Project(props) {
@@ -28,7 +28,7 @@ export default function Project(props) {
         flexFlow: { xs: "column", sm: orientation(id) },
       }}
     >
-      <Container
+      <Box
         disableGutters
         sx={{
           width: { xs: 1, sm: 1 / 3, md: 1 / 2 },
@@ -37,9 +37,8 @@ export default function Project(props) {
         }}
       >
         <Image src={pictureURL} fit="contain" />
-      </Container>
-      <Container
-        disableGutters
+      </Box>
+      <Box
         sx={{
           width: { xs: 1, sm: 2 / 3, md: 1 / 2 },
           px: 6,
@@ -48,11 +47,12 @@ export default function Project(props) {
           alignItems: "center",
         }}
       >
-        <Container disableGutters>
+        <Box>
           <Typography
             variant="h3"
             sx={{
               textAlign: "center",
+              mt: { xs: 2, sm: 0 },
               mb: 2,
               fontSize: { xs: "2rem", sm: "3rem" },
             }}
@@ -65,7 +65,7 @@ export default function Project(props) {
           <Typography variant="body1" sx={{ fontSize: textResponsiveFont }}>
             {descriptionText}
           </Typography>
-        </Container>
+        </Box>
         <Button
           href={githubLink}
           target="_blank"
@@ -79,7 +79,7 @@ export default function Project(props) {
         >
           View Project Code
         </Button>
-      </Container>
+      </Box>
     </Container>
   );
 }

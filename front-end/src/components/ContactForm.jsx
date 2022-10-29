@@ -76,7 +76,7 @@ export default function ContactForm() {
       <Box
         mx="auto"
         sx={{
-          mt: { xs: "100px", sm: "150px" },
+          mt: { xs: "100px", sm: 15 },
           width: 1,
           display: "flex",
           flexFlow: { xs: "column", md: "row" },
