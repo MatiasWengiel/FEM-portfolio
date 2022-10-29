@@ -5,7 +5,14 @@ import NavBar from "../components/NavBar";
 
 export default function Root(props) {
   return (
-    <Box sx={{ display: "flex", flexFlow: "column" }}>
+    <Box
+      sx={{
+        display: "flex",
+        flexFlow: "column",
+        minHeight: "100vh",
+        justifyContent: "space-between",
+      }}
+    >
       <NavBar />
       <Outlet />
       <Footer />
