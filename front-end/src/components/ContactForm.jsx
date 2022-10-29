@@ -86,15 +86,23 @@ export default function ContactForm() {
       >
         <Box
           sx={{
-            maxWidth: 1 / 2,
+            maxWidth: { xs: "80%", sm: 1 / 2 },
             minHeight: "inherit",
             display: "flex",
             flexFlow: "column",
             justifyContent: "space-between",
           }}
         >
-          <Typography variant="h2">Contact Me</Typography>
-          <Typography variant="body1" sx={{ mt: 2, maxWidth: "85%" }}>
+          <Typography
+            variant="h1"
+            sx={{ mb: 3, fontSize: { xs: "3rem", sm: "3rem", lg: "4rem" } }}
+          >
+            Contact Me
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{ mt: 2, maxWidth: "85%", display: { xs: "none", md: "flex" } }}
+          >
             I'd love to hear from you! If you are working on a project and need
             a full-stack web developer on your team, I will be happy to discuss
             whether I can help you meet your goals. I am also always open to
@@ -102,7 +110,7 @@ export default function ContactForm() {
             to say hi.
           </Typography>
         </Box>
-        <Box sx={{ mt: { xs: 2, md: 0 } }}>
+        <Box sx={{ mt: { xs: 0, md: 0 } }}>
           <Box>
             <Typography variant="body1">Name:</Typography>
             <TextField
@@ -142,7 +150,7 @@ export default function ContactForm() {
               disabled={state.sending}
             ></TextField>
           </Box>
-          <Box>
+          <Box sx={{ display: "flex", justifyContent: "center" }}>
             {!state.sending && (
               <Button sx={buttonStyles} onClick={handleSubmit}>
                 Submit

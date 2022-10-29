@@ -30,7 +30,7 @@ export default function Footer(props) {
       sx={{
         position: "relative",
         bottom: 0,
-        mt: "96px",
+        mt: { xs: "60px", sm: "96px" },
         color: `${theme.palette.secondary.main}`,
       }}
     >
