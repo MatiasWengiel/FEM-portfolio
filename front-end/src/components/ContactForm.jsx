@@ -40,14 +40,16 @@ export default function ContactForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    //Resets validation if there was a previous failed validation, then validates again
     setFailedValidation({ email: false, message: false });
     setValidationErrorMessage({ email: "", message: "" });
     if (!validate()) return;
 
     setSending(true);
     setSendingFailed(false);
+
     axios
-      .post("https://formbold.com/s/oaBd6BREAKER", { data: state.formData })
+      .post("https://formbold.com/s/oaBd6", { data: state.formData })
       .then((r) => {
         if (r.status === 201) {
           setFormData({ name: "", email: "", message: "" });
@@ -72,9 +74,9 @@ export default function ContactForm() {
         </Alert>
       )}
       <Box
-        mt="150px"
         mx="auto"
         sx={{
+          mt: { xs: "100px", sm: "150px" },
           width: 1,
           display: "flex",
           flexFlow: { xs: "column", md: "row" },
@@ -82,10 +84,25 @@ export default function ContactForm() {
           alignItems: { xs: "center", md: "start" },
         }}
       >
-        <Typography variant="h2" sx={{ mt: { xs: 2, md: 0 } }}>
-          Contact Me
-        </Typography>
-        <Box>
+        <Box
+          sx={{
+            maxWidth: 1 / 2,
+            minHeight: "inherit",
+            display: "flex",
+            flexFlow: "column",
+            justifyContent: "space-between",
+          }}
+        >
+          <Typography variant="h2">Contact Me</Typography>
+          <Typography variant="body1" sx={{ mt: 2, maxWidth: "85%" }}>
+            I'd love to hear from you! If you are working on a project and need
+            a full-stack web developer on your team, I will be happy to discuss
+            whether I can help you meet your goals. I am also always open to
+            feedback on this website, and happy to hear from people just wanting
+            to say hi.
+          </Typography>
+        </Box>
+        <Box sx={{ mt: { xs: 2, md: 0 } }}>
           <Box>
             <Typography variant="body1">Name:</Typography>
             <TextField
@@ -118,6 +135,7 @@ export default function ContactForm() {
               name="message"
               multiline
               rows={4}
+              label="What would you like to say?"
               value={state.formData.message}
               error={state.failedValidation.message}
               helperText={state.validationErrorMessage.message}
