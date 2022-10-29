@@ -23,12 +23,22 @@ export default function NavBar(props) {
   };
 
   const navBarButtons = [
-    <Button href="/">Home</Button>,
-    <Button href="https://github.com/MatiasWengiel" target="_blank">
+    <Button key="Home" href="/">
+      Home
+    </Button>,
+    <Button
+      key="Github"
+      href="https://github.com/MatiasWengiel"
+      target="_blank"
+    >
       , Github
     </Button>,
-    <Button href="/projects">Projects</Button>,
-    <Button>Contact Me</Button>,
+    <Button key="Projects" href="/projects">
+      Projects
+    </Button>,
+    <Button key="Contact" href="/contact">
+      Contact Me
+    </Button>,
   ];
 
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -40,7 +50,7 @@ export default function NavBar(props) {
         <svg xmlns="http://www.w3.org/2000/svg" width="61" height="32">
           <path
             fill="#33323D"
-            fill-rule="evenodd"
+            fillRule="evenodd"
             d="M60.082 5.878L44.408 32 28.735 5.878h31.347zM15.673 0l15.674 26.122H0L15.673 0z"
           />
         </svg>
@@ -66,8 +76,9 @@ export default function NavBar(props) {
         color="primary"
         aria-label="menu"
         sx={{ mr: 2, display: { xs: "flex", sm: "none" } }}
+        onClick={handleDrawerToggle}
       >
-        <MenuIcon onClick={handleDrawerToggle} />
+        <MenuIcon />
       </IconButton>
       <Drawer
         sx={{ display: { sm: "none" } }}

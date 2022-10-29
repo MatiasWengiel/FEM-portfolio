@@ -1,8 +1,15 @@
 import { Button, Typography, Box, Container, useTheme } from "@mui/material";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import GitHubIcon from "@mui/icons-material/GitHub";
+import { useLocation } from "react-router-dom";
+import ContactButtons from "./ContactButtons";
 
 export default function Footer(props) {
+  const routesWithCallToAction = ["/", "/projects"];
+  const useDisplayCallToAction = () => {
+    const currentLocation = useLocation();
+    if (!routesWithCallToAction.includes(currentLocation.pathname))
+      return "none";
+    return "flex";
+  };
   const theme = useTheme();
   const buttonStyles = {
     width: "200px",
@@ -23,13 +30,13 @@ export default function Footer(props) {
       sx={{
         position: "relative",
         bottom: 0,
-        mt: "96px",
+        mt: { xs: "60px", sm: "96px" },
         color: `${theme.palette.secondary.main}`,
       }}
     >
       <Container
         sx={{
-          display: "flex",
+          display: useDisplayCallToAction,
           flexFlow: { xs: "column", sm: "row" },
           justifyContent: "space-between",
           alignItems: "center",
@@ -44,7 +51,9 @@ export default function Footer(props) {
         >
           Interested in doing a project together?
         </Typography>
-        <Button sx={buttonStyles}>Contact Me</Button>
+        <Button sx={buttonStyles} href="/contact">
+          Contact Me
+        </Button>
       </Container>
       <Box
         sx={{
@@ -60,7 +69,7 @@ export default function Footer(props) {
           <svg xmlns="http://www.w3.org/2000/svg" width="61" height="32">
             <path
               fill={`${theme.palette.secondary.main}`}
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M60.082 5.878L44.408 32 28.735 5.878h31.347zM15.673 0l15.674 26.122H0L15.673 0z"
             />
           </svg>
@@ -72,20 +81,7 @@ export default function Footer(props) {
           </Typography>
         </Container>
         <Container sx={{ display: "flex", justifyContent: "end" }}>
-          <Button
-            href="https://www.linkedin.com/in/matias-wengiel/"
-            target="__blank"
-            sx={{ color: `inherit` }}
-          >
-            <LinkedInIcon />
-          </Button>
-          <Button
-            href="https://github.com/MatiasWengiel"
-            target="__blank"
-            sx={{ color: `inherit` }}
-          >
-            <GitHubIcon />
-          </Button>
+          <ContactButtons />
         </Container>
       </Box>
     </Box>
