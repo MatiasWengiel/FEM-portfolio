@@ -1,5 +1,5 @@
 import Image from "mui-image";
-import { Container, Typography, useTheme } from "@mui/material";
+import { Box, Container, Typography, useTheme } from "@mui/material";
 import myPicture from "../images/TestPicture.jpg";
 
 export default function AboutMe(props) {
@@ -31,7 +31,8 @@ export default function AboutMe(props) {
 
   return (
     <>
-      <Container id="AboutMe" sx={mainContainerStyles}>
+      <Box id="AboutMe" />
+      <Container sx={mainContainerStyles}>
         <Container disableGutters sx={imageContainerStyles}>
           <Image src={myPicture} sx={{ objectPosition: imagePositioning }} />
         </Container>
