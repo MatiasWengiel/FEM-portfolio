@@ -3,16 +3,16 @@ import Image from "mui-image";
 import { useTheme } from "@mui/material/styles";
 export default function Project(props) {
   const theme = useTheme();
-  const { id, title, pictureURL, descriptionText, taglineText, githubLink } = {
-    ...props,
-  };
+  const { id, title, pictureURL, descriptionText, taglineText, githubLink } =
+    props;
+
   //Causes the orientation of the picture and text components to reverse in alternating fashion depending on the id prop
   const orientation = (id) => (id % 2 === 0 ? "row-reverse" : "row");
   //Add extra margin at the top for the first rendered to account for the NavBar
   const marginTop = (id) => (id === 1 ? 15 : 5);
 
   const textResponsiveFont = {
-    lg: "1.3em",
+    lg: "1.2em",
     md: "1em",
     sm: "1em",
     xs: "1.25em",
@@ -29,7 +29,6 @@ export default function Project(props) {
       }}
     >
       <Box
-        disableGutters
         sx={{
           width: { xs: 1, sm: 1 / 3, md: 1 / 2 },
           p: 3,
@@ -47,12 +46,19 @@ export default function Project(props) {
           alignItems: "center",
         }}
       >
-        <Box>
+        <Box
+          sx={{
+            display: "flex",
+            flexFlow: "column",
+            alignItems: "space-between",
+            height: { sm: "350px" },
+          }}
+        >
           <Typography
             variant="h3"
             sx={{
               textAlign: "center",
-              mt: { xs: 2, sm: 0 },
+              mt: { xs: 4, sm: 0 },
               mb: 2,
               fontSize: { xs: "2rem", sm: "3rem" },
             }}
@@ -73,7 +79,7 @@ export default function Project(props) {
             border: `1px solid ${theme.palette.secondary.main}`,
             px: 3,
             py: 1,
-            mt: 2,
+            mt: { xs: 4, sm: 0 },
             width: 250,
           }}
         >

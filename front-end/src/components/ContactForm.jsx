@@ -3,6 +3,7 @@ import {
   Box,
   Button,
   CircularProgress,
+  Container,
   TextField,
   Typography,
   useTheme,
@@ -63,7 +64,7 @@ export default function ContactForm() {
       });
   };
   return (
-    <>
+    <Container>
       {state.sendingFailed && (
         <Alert
           severity="error"
@@ -164,6 +165,6 @@ export default function ContactForm() {
           </Box>
         </Box>
       </Box>
-    </>
+    </Container>
   );
 }

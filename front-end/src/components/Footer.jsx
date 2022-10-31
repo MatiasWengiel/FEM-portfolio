@@ -40,6 +40,7 @@ export default function Footer(props) {
           flexFlow: { xs: "column", sm: "row" },
           justifyContent: "space-between",
           alignItems: "center",
+          mb: { xs: "60px", sm: "96px" },
         }}
       >
         <Typography
@@ -59,7 +60,6 @@ export default function Footer(props) {
         sx={{
           display: "flex",
           alignItems: "center",
-          mt: "50px",
           height: "50px",
           backgroundColor: `${theme.palette.primary.dark}`,
           color: `inherit`,
