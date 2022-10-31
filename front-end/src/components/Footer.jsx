@@ -25,24 +25,33 @@ export default function Footer(props) {
       backgroundColor: `${theme.palette.secondary.main}`,
     },
   };
+
+  const boxStyles = {
+    position: "relative",
+    bottom: 0,
+    mt: { xs: "60px", sm: "96px" },
+    color: `${theme.palette.secondary.main}`,
+  };
+
+  const callToActionContainerStyles = {
+    display: useDisplayCallToAction,
+    flexFlow: { xs: "column", sm: "row" },
+    justifyContent: "space-between",
+    alignItems: "center",
+    mb: { xs: "60px", sm: "96px" },
+  };
+
+  const footerBoxStyles = {
+    display: "flex",
+    alignItems: "center",
+    height: "50px",
+    backgroundColor: `${theme.palette.primary.dark}`,
+    color: `inherit`,
+  };
+
   return (
-    <Box
-      sx={{
-        position: "relative",
-        bottom: 0,
-        mt: { xs: "60px", sm: "96px" },
-        color: `${theme.palette.secondary.main}`,
-      }}
-    >
-      <Container
-        sx={{
-          display: useDisplayCallToAction,
-          flexFlow: { xs: "column", sm: "row" },
-          justifyContent: "space-between",
-          alignItems: "center",
-          mb: { xs: "60px", sm: "96px" },
-        }}
-      >
+    <Box sx={boxStyles}>
+      <Container sx={callToActionContainerStyles}>
         <Typography
           variant="h3"
           sx={{
@@ -56,15 +65,7 @@ export default function Footer(props) {
           Contact Me
         </Button>
       </Container>
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          height: "50px",
-          backgroundColor: `${theme.palette.primary.dark}`,
-          color: `inherit`,
-        }}
-      >
+      <Box sx={footerBoxStyles}>
         <Container sx={{ display: "flex", alignItems: "center" }}>
           <svg xmlns="http://www.w3.org/2000/svg" width="61" height="32">
             <path

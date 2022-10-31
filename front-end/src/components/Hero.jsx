@@ -41,12 +41,7 @@ export default function Hero(props) {
   };
 
   return (
-    <Container
-      sx={{
-        mt: 15,
-        position: "relative",
-      }}
-    >
+    <Container sx={{ mt: 15, position: "relative" }}>
       <Image src={heroBackground} />
       <Paper sx={paperStyles}>
         <Typography sx={typographyStyles}>
