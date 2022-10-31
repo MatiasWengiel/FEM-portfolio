@@ -31,7 +31,7 @@ export default function NavBar(props) {
       href="https://github.com/MatiasWengiel"
       target="_blank"
     >
-      , Github
+      Github
     </Button>,
     <Button key="Projects" href="/projects">
       Projects

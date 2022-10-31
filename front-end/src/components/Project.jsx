@@ -18,51 +18,58 @@ export default function Project(props) {
     xs: "1.25em",
   };
 
+  const mainContainerStyles = {
+    mt: marginTop(id),
+    height: { md: 350 },
+    position: "relative",
+    display: "flex",
+    flexFlow: { xs: "column", sm: orientation(id) },
+  };
+
+  const imageBoxStyles = {
+    width: { xs: 1, sm: 1 / 3, md: 1 / 2 },
+    p: 3,
+    backgroundColor: `${theme.palette.secondary.light}`,
+  };
+
+  const textAreaStyles = {
+    width: { xs: 1, sm: 2 / 3, md: 1 / 2 },
+    px: 6,
+    display: "flex",
+    flexFlow: "column",
+    alignItems: "center",
+  };
+
+  const titleAndParagraphStyles = {
+    display: "flex",
+    flexFlow: "column",
+    alignItems: "space-between",
+    height: { sm: "350px" },
+  };
+
+  const titleTypographyStyles = {
+    textAlign: "center",
+    mt: { xs: 4, sm: 0 },
+    mb: 2,
+    fontSize: { xs: "2rem", sm: "3rem" },
+  };
+
+  const buttonStyles = {
+    border: `1px solid ${theme.palette.secondary.main}`,
+    px: 3,
+    py: 1,
+    mt: { xs: 4, sm: 0 },
+    width: 250,
+  };
+
   return (
-    <Container
-      sx={{
-        mt: marginTop(id),
-        height: { md: 350 },
-        position: "relative",
-        display: "flex",
-        flexFlow: { xs: "column", sm: orientation(id) },
-      }}
-    >
-      <Box
-        sx={{
-          width: { xs: 1, sm: 1 / 3, md: 1 / 2 },
-          p: 3,
-          backgroundColor: `${theme.palette.secondary.light}`,
-        }}
-      >
+    <Container sx={mainContainerStyles}>
+      <Box sx={imageBoxStyles}>
         <Image src={pictureURL} fit="contain" />
       </Box>
-      <Box
-        sx={{
-          width: { xs: 1, sm: 2 / 3, md: 1 / 2 },
-          px: 6,
-          display: "flex",
-          flexFlow: "column",
-          alignItems: "center",
-        }}
-      >
-        <Box
-          sx={{
-            display: "flex",
-            flexFlow: "column",
-            alignItems: "space-between",
-            height: { sm: "350px" },
-          }}
-        >
-          <Typography
-            variant="h3"
-            sx={{
-              textAlign: "center",
-              mt: { xs: 4, sm: 0 },
-              mb: 2,
-              fontSize: { xs: "2rem", sm: "3rem" },
-            }}
-          >
+      <Box sx={textAreaStyles}>
+        <Box sx={titleAndParagraphStyles}>
+          <Typography variant="h3" sx={titleTypographyStyles}>
             {title}
           </Typography>
           <Typography variant="h6" mb={1} sx={{ fontSize: textResponsiveFont }}>
@@ -72,17 +79,7 @@ export default function Project(props) {
             {descriptionText}
           </Typography>
         </Box>
-        <Button
-          href={githubLink}
-          target="_blank"
-          sx={{
-            border: `1px solid ${theme.palette.secondary.main}`,
-            px: 3,
-            py: 1,
-            mt: { xs: 4, sm: 0 },
-            width: 250,
-          }}
-        >
+        <Button href={githubLink} target="_blank" sx={buttonStyles}>
           View Project Code
         </Button>
       </Box>
