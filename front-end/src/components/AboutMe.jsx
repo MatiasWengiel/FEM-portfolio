@@ -50,12 +50,12 @@ export default function AboutMe(props) {
               color: `${theme.palette.primary.dark}`,
             }}
           >
-            Enthusiastic Full-Stack Web Developer, passionate about writing code
-            that is reusable, scalable and testable. Transitioning from a career
-            in post-secondary education, with experience in both working within
-            and leading multidisciplinary teams, breaking down and communicating
-            complex technical information, and creating thorough, detailed
-            documentation.
+            I am an enthusiastic Full-Stack Web Developer, passionate about
+            writing code that is reusable, scalable and testable. I am currently
+            transitioning from a career in post-secondary education, with
+            experience in breaking down and communicating complex technical
+            information, working within multidisciplinary teams, and creating
+            thorough, detailed documentation.
           </Typography>
         </Container>
       </Container>
