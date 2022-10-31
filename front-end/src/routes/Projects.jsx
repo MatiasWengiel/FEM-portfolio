@@ -17,7 +17,7 @@ export default function Projects(props) {
         key={2}
         id={2}
         title="Portfolio"
-        pictureURL="https://raw.githubusercontent.com/MatiasWengiel/HomeGardnr--Caitlin-Croteau-Raiza-DeGuzman-Matias-Wengiel/task/finish-README/docs/Gardnr-viewunwateredplants.png"
+        pictureURL="https://github.com/MatiasWengiel/FEM-portfolio/blob/main/front-end/src/images/FrontPageScreenshot.png?raw=true"
         taglineText="You are here! And now you can see how I built this"
         descriptionText="Created using React and MUI. General design and colors from frontendmentor.io's figma designs."
         githubLink="https://github.com/MatiasWengiel/FEM-portfolio"
