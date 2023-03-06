@@ -28,6 +28,11 @@ export default function ContactForm() {
     },
   };
 
+  const labelStyles = { 
+    width: { xs: 250, sm: 500 },
+    marginTop: 1
+  }
+
   const {
     setFormData,
     setSending,
@@ -116,7 +121,7 @@ export default function ContactForm() {
             <Typography variant="body1">Name:</Typography>
             <TextField
               onChange={handleChange}
-              sx={{ width: { xs: 250, sm: 500 } }}
+              sx={labelStyles}
               name="name"
               label="What's your name?"
               value={state.formData.name}
@@ -127,7 +132,7 @@ export default function ContactForm() {
             <Typography variant="body1">Email:</Typography>
             <TextField
               onChange={handleChange}
-              sx={{ width: { xs: 250, sm: 500 } }}
+              sx={labelStyles}
               name="email"
               label="Please enter your e-mail"
               value={state.formData.email}
@@ -140,7 +145,7 @@ export default function ContactForm() {
             <Typography variant="body1">Message</Typography>
             <TextField
               onChange={handleChange}
-              sx={{ width: { xs: 250, sm: 500 } }}
+              sx={labelStyles}
               name="message"
               multiline
               rows={4}
