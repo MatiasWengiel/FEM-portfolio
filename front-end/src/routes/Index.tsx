@@ -1,7 +1,9 @@
 import AboutMe from "../components/AboutMe";
 import Hero from "../components/Hero";
 
-export default function Index(props) {
+interface IndexProps {}
+
+export default function Index(_props: IndexProps) {
   return (
     <>
       <Hero />

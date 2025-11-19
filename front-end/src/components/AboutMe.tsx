@@ -2,7 +2,9 @@ import { Box, Container, Typography, useTheme } from "@mui/material";
 import Image from "mui-image";
 import myPicture from "../images/Matias-small.jpg";
 
-export default function AboutMe(props) {
+interface AboutMeProps {}
+
+export default function AboutMe(_props: AboutMeProps) {
   const theme = useTheme();
   const mainContainerStyles = {
     display: "flex",

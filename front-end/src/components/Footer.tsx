@@ -1,13 +1,14 @@
-import { Button, Typography, Box, Container, useTheme } from "@mui/material";
+import { Box, Button, Container, Typography, useTheme } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import ContactButtons from "./ContactButtons";
 
-export default function Footer(props) {
+interface FooterProps {}
+
+export default function Footer(_props: FooterProps) {
   const routesWithCallToAction = ["/", "/projects"];
   const useDisplayCallToAction = () => {
     const currentLocation = useLocation();
-    if (!routesWithCallToAction.includes(currentLocation.pathname))
-      return "none";
+    if (!routesWithCallToAction.includes(currentLocation.pathname)) return "none";
     return "flex";
   };
   const theme = useTheme();
@@ -27,14 +28,14 @@ export default function Footer(props) {
   };
 
   const boxStyles = {
-    position: "relative",
+    position: "relative" as const,
     bottom: 0,
     mt: { xs: "60px", sm: "96px" },
     color: `${theme.palette.secondary.main}`,
   };
 
   const callToActionContainerStyles = {
-    display: useDisplayCallToAction,
+    display: useDisplayCallToAction(),
     flexFlow: { xs: "column", sm: "row" },
     justifyContent: "space-between",
     alignItems: "center",
@@ -74,10 +75,7 @@ export default function Footer(props) {
               d="M60.082 5.878L44.408 32 28.735 5.878h31.347zM15.673 0l15.674 26.122H0L15.673 0z"
             />
           </svg>
-          <Typography
-            variant="body"
-            sx={{ ml: 2, display: { xs: "none", sm: "flex" } }}
-          >
+          <Typography variant="body1" sx={{ ml: 2, display: { xs: "none", sm: "flex" } }}>
             Matias Wengiel
           </Typography>
         </Container>

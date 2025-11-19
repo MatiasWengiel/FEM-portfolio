@@ -5,7 +5,9 @@ import heroBackground from "../images/HeroBannerPicture.jpg"; //Photo by Domenic
 
 import KeyboardDoubleArrowDownIcon from "@mui/icons-material/KeyboardDoubleArrowDown";
 
-export default function Hero(props) {
+interface HeroProps {}
+
+export default function Hero(_props: HeroProps) {
   const theme = useTheme();
   const paperStyles = {
     borderRadius: 0,

@@ -1,15 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import reportWebVitals from './reportWebVitals';
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import React from "react";
+import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Root from './routes/Root';
-import ErrorPage from './routes/ErrorPage';
-import Index from './routes/Index';
-import Projects from './routes/Projects'
-import ContactMe from './routes/ContactMe';
-
+import "./index.css";
+import reportWebVitals from "./reportWebVitals";
+import ContactMe from "./routes/ContactMe";
+import ErrorPage from "./routes/ErrorPage";
+import Index from "./routes/Index";
+import Projects from "./routes/Projects";
+import Root from "./routes/Root";
 
 const router = createBrowserRouter([
   {
@@ -19,50 +18,49 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Index />
+        element: <Index />,
       },
       {
         path: "/projects",
-        element: <Projects />
+        element: <Projects />,
       },
       {
         path: "/contact",
-        element: <ContactMe />
-      }
-    ]
-  }
-])
+        element: <ContactMe />,
+      },
+    ],
+  },
+]);
 
 const theme = createTheme({
   palette: {
     primary: {
       light: "#5FB4A2",
-      main: '#203A4C',
-      dark: '#33323D'
+      main: "#203A4C",
+      dark: "#33323D",
     },
     secondary: {
-      light: '#FAFAFA',
-      main: '#EAEAEB',
+      light: "#FAFAFA",
+      main: "#EAEAEB",
     },
     error: {
-      main: '#F43030'
-    }
+      main: "#F43030",
+    },
   },
   typography: {
     h1: {
-      color: '#203A4C'
+      color: "#203A4C",
     },
     h2: {
-      color: '#203A4C'
+      color: "#203A4C",
     },
     h3: {
-      color: '#203A4C'
+      color: "#203A4C",
     },
-  }
+  },
 });
 
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>

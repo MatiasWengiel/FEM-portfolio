@@ -1,17 +1,11 @@
-import {
-  Alert,
-  Box,
-  Button,
-  CircularProgress,
-  Container,
-  TextField,
-  Typography,
-  useTheme,
-} from "@mui/material";
+import { Alert, Box, Button, CircularProgress, Container, TextField, Typography, useTheme } from "@mui/material";
 import axios from "axios";
+import React from "react";
 import useContactForm from "./hooks/useContactForm";
 
-export default function ContactForm() {
+interface ContactFormProps {}
+
+export default function ContactForm(_props: ContactFormProps) {
   const theme = useTheme();
   const buttonStyles = {
     width: "200px",
@@ -28,10 +22,10 @@ export default function ContactForm() {
     },
   };
 
-  const labelStyles = { 
+  const labelStyles = {
     width: { xs: 250, sm: 500 },
-    marginTop: 1
-  }
+    marginTop: 1,
+  };
 
   const {
     setFormData,
@@ -44,7 +38,7 @@ export default function ContactForm() {
     state,
   } = useContactForm();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.FormEvent<HTMLElement>) => {
     event.preventDefault();
     //Resets validation if there was a previous failed validation, then validates again
     setFailedValidation({ email: false, message: false });
@@ -71,12 +65,8 @@ export default function ContactForm() {
   return (
     <Container>
       {state.sendingFailed && (
-        <Alert
-          severity="error"
-          sx={{ position: "absolute", mt: "80px", width: "100vw" }}
-        >
-          Something went wrong with the contact form submission. Please try
-          again.
+        <Alert severity="error" sx={{ position: "absolute", mt: "80px", width: "100vw" }}>
+          Something went wrong with the contact form submission. Please try again.
         </Alert>
       )}
       <Box
@@ -99,21 +89,13 @@ export default function ContactForm() {
             justifyContent: "space-between",
           }}
         >
-          <Typography
-            variant="h1"
-            sx={{ mb: 3, fontSize: { xs: "3rem", sm: "3rem", lg: "4rem" } }}
-          >
+          <Typography variant="h1" sx={{ mb: 3, fontSize: { xs: "3rem", sm: "3rem", lg: "4rem" } }}>
             Contact Me
           </Typography>
-          <Typography
-            variant="body1"
-            sx={{ mt: 2, maxWidth: "85%", display: { xs: "none", md: "flex" } }}
-          >
-            I'd love to hear from you! If you are working on a project and need
-            a full-stack web developer on your team, I will be happy to discuss
-            whether I can help you meet your goals. I am also always open to
-            feedback on this website, and happy to hear from people just wanting
-            to say hi.
+          <Typography variant="body1" sx={{ mt: 2, maxWidth: "85%", display: { xs: "none", md: "flex" } }}>
+            I'd love to hear from you! If you are working on a project and need a full-stack web developer on your team,
+            I will be happy to discuss whether I can help you meet your goals. I am also always open to feedback on this
+            website, and happy to hear from people just wanting to say hi.
           </Typography>
         </Box>
         <Box sx={{ mt: { xs: 0, md: 0 } }}>
@@ -156,17 +138,18 @@ export default function ContactForm() {
               disabled={state.sending}
             ></TextField>
           </Box>
-          <Box sx={{ display: "flex", justifyContent: "center" }}>
+          <Box sx={{ display: "flex", justifyContent: "space-around" }}>
+            {!state.sending && (
+              <Button sx={buttonStyles} href="/">
+                Back
+              </Button>
+            )}
             {!state.sending && (
               <Button sx={buttonStyles} onClick={handleSubmit}>
                 Submit
               </Button>
             )}
-            {state.sending && (
-              <CircularProgress
-                sx={{ width: "200px", height: "36.5px", mt: "30px" }}
-              />
-            )}
+            {state.sending && <CircularProgress sx={{ width: "200px", height: "36.5px", mt: "30px" }} />}
           </Box>
         </Box>
       </Box>

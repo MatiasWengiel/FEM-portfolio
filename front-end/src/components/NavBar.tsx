@@ -1,16 +1,10 @@
-import {
-  AppBar,
-  Button,
-  Box,
-  IconButton,
-  Typography,
-  useTheme,
-  Drawer,
-} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import { AppBar, Box, Button, Drawer, IconButton, Typography, useTheme } from "@mui/material";
 import { useState } from "react";
 
-export default function NavBar(props) {
+interface NavBarProps {}
+
+export default function NavBar(_props: NavBarProps) {
   const theme = useTheme();
   const appBarStyles = {
     height: 80,
@@ -26,11 +20,7 @@ export default function NavBar(props) {
     <Button key="Home" href="/">
       Home
     </Button>,
-    <Button
-      key="Github"
-      href="https://github.com/MatiasWengiel"
-      target="_blank"
-    >
+    <Button key="Github" href="https://github.com/MatiasWengiel" target="_blank">
       Github
     </Button>,
     <Button key="Projects" href="/projects">
@@ -54,10 +44,7 @@ export default function NavBar(props) {
             d="M60.082 5.878L44.408 32 28.735 5.878h31.347zM15.673 0l15.674 26.122H0L15.673 0z"
           />
         </svg>
-        <Typography
-          variant="body"
-          sx={{ color: theme.palette.primary.main, ml: 2 }}
-        >
+        <Typography variant="body1" sx={{ color: theme.palette.primary.main, ml: 2 }}>
           Matias Wengiel
         </Typography>
       </Box>
@@ -80,12 +67,7 @@ export default function NavBar(props) {
       >
         <MenuIcon />
       </IconButton>
-      <Drawer
-        sx={{ display: { sm: "none" } }}
-        anchor="top"
-        open={drawerOpen}
-        onClose={handleDrawerToggle}
-      >
+      <Drawer sx={{ display: { sm: "none" } }} anchor="top" open={drawerOpen} onClose={handleDrawerToggle}>
         {navBarButtons}
       </Drawer>
     </AppBar>
