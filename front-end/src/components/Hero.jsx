@@ -43,14 +43,10 @@ export default function Hero(props) {
 
   return (
     <Container sx={{ mt: 15, position: "relative" }}>
-      <Image
-        sx={{ maxHeight: { xs: "400px", lg: "450px", xl: "600px" } }}
-        src={heroBackground}
-      />
+      <Image sx={{ maxHeight: { xs: "400px", lg: "450px", xl: "600px" } }} src={heroBackground} />
       <Paper sx={paperStyles}>
         <Typography sx={typographyStyles}>
-          Hey, I am Matias Wengiel and I am passionate about building great
-          code.
+          Hi! I'm Matias, welcome to my (infrequently maintained) personal page.
         </Typography>
         <Button href="#AboutMe" sx={buttonStyles}>
           <KeyboardDoubleArrowDownIcon />

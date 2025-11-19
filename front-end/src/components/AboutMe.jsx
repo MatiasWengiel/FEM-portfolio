@@ -1,6 +1,6 @@
-import Image from "mui-image";
 import { Box, Container, Typography, useTheme } from "@mui/material";
-import myPicture from "../images/TestPicture.jpg";
+import Image from "mui-image";
+import myPicture from "../images/Matias-small.jpg";
 
 export default function AboutMe(props) {
   const theme = useTheme();
@@ -37,10 +37,7 @@ export default function AboutMe(props) {
           <Image src={myPicture} sx={{ objectPosition: imagePositioning }} />
         </Container>
         <Container sx={{ m: 0, width: { xs: 1, sm: 2 / 3, md: 1 / 2 } }}>
-          <Typography
-            variant="h1"
-            sx={{ mb: 3, fontSize: { xs: "4rem", sm: "3rem", lg: "4rem" } }}
-          >
+          <Typography variant="h1" sx={{ mb: 3, fontSize: { xs: "4rem", sm: "3rem", lg: "4rem" } }}>
             About Me
           </Typography>
           <Typography
@@ -50,12 +47,11 @@ export default function AboutMe(props) {
               color: `${theme.palette.primary.dark}`,
             }}
           >
-            I am an enthusiastic Full-Stack Web Developer, passionate about
-            writing code that is reusable, scalable and testable. I am currently
-            transitioning from a career in post-secondary education, with
-            experience in breaking down and communicating complex technical
-            information, working within multidisciplinary teams, and creating
-            thorough, detailed documentation.
+            I am a Software Development Consultant specializing in Data Transformation and Full-Stack Web Development. I
+            thrive in fast-paced environments, delivering results across both established platforms and greenfield
+            projects. As a pragmatic problem solver, I prioritize shipping working, maintainable, and modular code. My
+            focus is on solutions that meet the requirements of today and the expectations of tomorrow, avoiding the
+            pitfalls of infinitely complex 'future-proof' systems.
           </Typography>
         </Container>
       </Container>
