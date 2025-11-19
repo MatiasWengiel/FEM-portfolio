@@ -1,13 +1,51 @@
 import { useReducer } from "react";
 
-export default function useContactForm() {
+interface FormData {
+  name: string;
+  email: string;
+  message: string;
+}
+
+interface ValidationState {
+  email: boolean;
+  message: boolean;
+}
+
+interface ContactFormState {
+  formData: FormData;
+  sending: boolean;
+  sendingFailed: boolean;
+  failedValidation: ValidationState;
+  validationErrorMessage: {
+    email: string;
+    message: string;
+  };
+}
+
+interface Action {
+  type: string;
+  [key: string]: any;
+}
+
+interface UseContactFormReturn {
+  setFormData: (formData: FormData) => void;
+  setSending: (sending: boolean) => void;
+  setSendingFailed: (failed: boolean) => void;
+  setFailedValidation: (validation: ValidationState) => void;
+  setValidationErrorMessage: (messages: { email: string; message: string }) => void;
+  handleChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  validate: () => boolean;
+  state: ContactFormState;
+}
+
+export default function useContactForm(): UseContactFormReturn {
   const SET_FORM_DATA = "SET_FORM_DATA";
   const SET_SENDING = "SET_SENDING";
   const SET_SENDING_FAILED = "SET_SENDING_FAILED";
   const SET_FAILED_VALIDATION = "SET_FAILED_VALIDATION";
   const SET_VALIDATION_ERROR_MESSAGE = "SET_VALIDATION_ERROR_MESSAGE";
 
-  const initialState = {
+  const initialState: ContactFormState = {
     formData: {
       name: "",
       email: "",
@@ -25,7 +63,7 @@ export default function useContactForm() {
     },
   };
 
-  const reducer = (state, action) => {
+  const reducer = (state: ContactFormState, action: Action): ContactFormState => {
     switch (action.type) {
       case SET_FORM_DATA:
         return { ...state, formData: action.formData };
@@ -47,23 +85,23 @@ export default function useContactForm() {
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const setFormData = (formData) => dispatch({ type: SET_FORM_DATA, formData });
-  const setSending = (sending) => dispatch({ type: SET_SENDING, sending });
-  const setSendingFailed = (sendingFailed) =>
-    dispatch({ type: SET_SENDING_FAILED, sendingFailed });
-  const setFailedValidation = (failedValidation) =>
+  const setFormData = (formData: FormData) => dispatch({ type: SET_FORM_DATA, formData });
+  const setSending = (sending: boolean) => dispatch({ type: SET_SENDING, sending });
+  const setSendingFailed = (sendingFailed: boolean) => dispatch({ type: SET_SENDING_FAILED, sendingFailed });
+  const setFailedValidation = (failedValidation: ValidationState) =>
     dispatch({ type: SET_FAILED_VALIDATION, failedValidation });
-  const setValidationErrorMessage = (validationErrorMessage) =>
+  const setValidationErrorMessage = (validationErrorMessage: { email: string; message: string }) =>
     dispatch({ type: SET_VALIDATION_ERROR_MESSAGE, validationErrorMessage });
 
-  const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     event.preventDefault();
     setFormData({
       ...state.formData,
       [event.target.name]: event.target.value,
     });
   };
-  const validate = () => {
+
+  const validate = (): boolean => {
     let allowSubmit = true;
     if (state.formData.message === "") {
       setFailedValidation({ ...state.failedValidation, message: true });

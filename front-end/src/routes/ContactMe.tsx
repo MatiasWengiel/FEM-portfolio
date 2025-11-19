@@ -1,6 +1,8 @@
 import ContactForm from "../components/ContactForm";
 
-export default function ContactMe() {
+interface ContactMeProps {}
+
+export default function ContactMe(_props: ContactMeProps) {
   return (
     <>
       <ContactForm />

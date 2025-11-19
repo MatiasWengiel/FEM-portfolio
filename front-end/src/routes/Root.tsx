@@ -3,7 +3,9 @@ import { Outlet } from "react-router-dom";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 
-export default function Root(props) {
+interface RootProps {}
+
+export default function Root(_props: RootProps) {
   return (
     <Box
       sx={{

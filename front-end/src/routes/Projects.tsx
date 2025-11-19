@@ -1,6 +1,8 @@
 import Project from "../components/Project";
 
-export default function Projects(props) {
+interface ProjectsProps {}
+
+export default function Projects(_props: ProjectsProps) {
   // This is a temporary solution. In the future I will create a back-end component that will retrieve this information from a database
   return (
     <>

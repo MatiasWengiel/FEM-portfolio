@@ -3,8 +3,10 @@ import { useRouteError } from "react-router-dom";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 
-export default function ErrorPage(props) {
-  const error = useRouteError();
+interface ErrorPageProps {}
+
+export default function ErrorPage(_props: ErrorPageProps) {
+  const error = useRouteError() as { statusText?: string; message?: string };
   console.error(error);
 
   return (

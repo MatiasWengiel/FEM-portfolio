@@ -1,15 +1,24 @@
-import { Container, Typography, Button, Box } from "@mui/material";
-import Image from "mui-image";
+import { Box, Button, Container, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-export default function Project(props) {
+import Image from "mui-image";
+
+interface ProjectProps {
+  id: number;
+  title: string;
+  pictureURL: string;
+  descriptionText: string;
+  taglineText: string;
+  githubLink: string;
+}
+
+export default function Project(props: ProjectProps) {
   const theme = useTheme();
-  const { id, title, pictureURL, descriptionText, taglineText, githubLink } =
-    props;
+  const { id, title, pictureURL, descriptionText, taglineText, githubLink } = props;
 
   //Causes the orientation of the picture and text components to reverse in alternating fashion depending on the id prop
-  const orientation = (id) => (id % 2 === 0 ? "row-reverse" : "row");
+  const orientation = (id: number) => (id % 2 === 0 ? "row-reverse" : "row");
   //Add extra margin at the top for the first rendered to account for the NavBar
-  const marginTop = (id) => (id === 1 ? 15 : 5);
+  const marginTop = (id: number) => (id === 1 ? 15 : 5);
 
   const textResponsiveFont = {
     lg: "1.2em",
@@ -48,7 +57,7 @@ export default function Project(props) {
   };
 
   const titleTypographyStyles = {
-    textAlign: "center",
+    textAlign: "center" as const,
     mt: { xs: 4, sm: 0 },
     mb: 2,
     fontSize: { xs: "2rem", sm: "3rem" },
