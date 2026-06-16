@@ -48,8 +48,8 @@
   },
   "devDependencies": {
     "@types/node": "^22.15.19",
-    "@vitejs/plugin-react": "^4.4.1",
-    "vite": "^6.3.5",
+    "@vitejs/plugin-react": "^6.0.2",
+    "vite": "^8.0.16",
     "vite-tsconfig-paths": "^4.3.2"
   }
 }
